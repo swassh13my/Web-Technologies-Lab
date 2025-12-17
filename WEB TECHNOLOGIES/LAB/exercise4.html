@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Product Card</title>
+    <style>
+        /* Container styling */
+        body {
+            font-family: 'Segoe UI', sans-serif;
+            background-color: #f0f2f5;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+
+        /* The Product Card */
+        .product-card {
+            background-color: #fff;
+            width: 300px;
+            border-radius: 12px;
+            border: 1px solid #e1e1e1;
+            overflow: hidden; /* Ensures image corners match card radius */
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease;
+            margin: 20px;
+        }
+
+        /* Hover effect on the whole card */
+        .product-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+        }
+
+        .product-image {
+            width: 100%;
+            height: 200px;
+            background-color: #eee;
+            object-fit: cover;
+        }
+
+        .product-content {
+            padding: 20px;
+        }
+
+        .product-title {
+            font-size: 1.25rem;
+            margin: 0 0 10px 0;
+            color: #333;
+        }
+
+        .product-description {
+            font-size: 0.9rem;
+            color: #666;
+            line-height: 1.4;
+            margin-bottom: 15px;
+        }
+
+        .product-price {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: #2c3e50;
+            display: block;
+            margin-bottom: 20px;
+        }
+
+        /* Button Styling */
+        .buy-button {
+            width: 100%;
+            padding: 12px;
+            background-color: #007bff;
+            color: white;
+            border: none;
+            border-radius: 6px;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: background-color 0.2s ease;
+        }
+
+        /* Button Hover Effect */
+        .buy-button:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="product-card">
+        <img src="https://via.placeholder.com/300x200" alt="Wireless Headphones" class="product-image">
+        
+        <div class="product-content">
+            <h3 class="product-title">Wireless Headphones</h3>
+            <p class="product-description">
+                Experience crystal clear sound with noise-canceling technology and 40-hour battery life.
+            </p>
+            <span class="product-price">$129.99</span>
+            <button class="buy-button">Buy Now</button>
+        </div>
+    </div>
+
+</body>
+</html>
