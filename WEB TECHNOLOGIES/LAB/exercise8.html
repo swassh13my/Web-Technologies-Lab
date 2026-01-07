@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Exercise 3: Drag & Drop Task Manager</title>
+  <style>
+    body { font-family: Arial, sans-serif; padding: 20px; background: #f7f7f7; }
+    h2 { margin-bottom: 10px; }
+    .controls { display: flex; gap: 10px; margin-bottom: 20px; }
+    input[type="text"] { padding: 8px; width: 300px; }
+    button { padding: 8px 12px; cursor: pointer; }
+    .board { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
+    .column {
+      background: #fff; border: 2px dashed #ccc; border-radius: 8px;
+      min-height: 250px; padding: 12px; transition: border-color 0.2s;
+    }
+    .column.dragover { border-color: #1E88E5; }
+    .column h3 { margin-top: 0; }
+    .task {
+      background: #fff; border: 1px solid #ddd; border-radius: 6px;
+      padding: 10px; margin-bottom: 10px; cursor: grab; box-shadow: 0 2px 4px rgba(0,0,0,0.08);
+    }
+    .task.completed { background: #C8E6C9; border-color: #81C784; }
+    .message {
+      margin-top: 12px; color: #2e7d32; font-weight: bold; display: none;
+    }
+    .message.show { display: block; }
+  </style>
+</head>
+<body>
+  <h2>Mini Task Board</h2>
+  <div class="controls">
+    <input id="taskInput" type="text" placeholder="Enter task name" />
+    <button id="addTaskBtn">Add Task</button>
+  </div>
+
+  <div class="board">
+    <div class="column" id="todo" data-status="To Do">
+      <h3>To Do</h3>
+    </div>
+    <div class="column" id="inprogress" data-status="In Progress">
+      <h3>In Progress</h3>
+    </div>
+    <div class="column" id="completed" data-status="Completed">
+      <h3>Completed</h3>
+      <div id="completedMsg" class="message">Task Completed Successfully</div>
+    </div>
+  </div>
+
+  <script>
+    const taskInput = document.getElementById('taskInput');
+    const addTaskBtn = document.getElementById('addTaskBtn');
+    const columns = document.querySelectorAll('.column');
+    const completedMsg = document.getElementById('completedMsg');
+
+    let taskIdCounter = 0;
+
+    function createTaskCard(name) {
+      const card = document.createElement('div');
+      card.className = 'task';
+      card.draggable = true;
+      card.id = `task-${++taskIdCounter}`;
+
+      const dateStr = new Date().toLocaleString();
+      card.innerHTML = `<strong>${name}</strong><br/><small>${dateStr}</small>`;
+
+      // Drag events
+      card.addEventListener('dragstart', (e) => {
+        e.dataTransfer.setData('text/plain', card.id);
+        // For Firefox
+        e.dataTransfer.effectAllowed = 'move';
+      });
+
+      card.addEventListener('dragend', () => {
+        // Optional: visual cleanup
+      });
+
+      return card;
+    }
+
+    addTaskBtn.addEventListener('click', () => {
+      const name = taskInput.value.trim();
+      if (!name) {
+        alert('Please enter a task name.');
+        return;
+      }
+      const card = createTaskCard(name);
+      document.getElementById('todo').appendChild(card);
+      taskInput.value = '';
+    });
+
+    columns.forEach(col => {
+      col.addEventListener('dragover', (e) => {
+        e.preventDefault();
+        col.classList.add('dragover');
+      });
+
+      col.addEventListener('dragleave', () => {
+        col.classList.remove('dragover');
+      });
+
+      col.addEventListener('drop', (e) => {
+        e.preventDefault();
+        col.classList.remove('dragover');
+        const id = e.dataTransfer.getData('text/plain');
+        const card = document.getElementById(id);
+        if (!card) return;
+
+        col.appendChild(card);
+
+        if (col.id === 'completed') {
+          card.classList.add('completed');
+          completedMsg.classList.add('show');
+          setTimeout(() => completedMsg.classList.remove('show'), 2000);
+        } else {
+          card.classList.remove('completed');
+        }
+      });
+    });
+  </script>
+</body>
+</html>
