@@ -1,0 +1,20 @@
+<div class="monitor-container">
+    <h2>User Activity Monitor</h2>
+    
+    <div id="sandbox" style="padding: 20px; border: 2px dashed #ccc; margin-bottom: 20px;">
+        <h3>Interaction Sandbox</h3>
+        <p>Click around, type here, or focus on these elements.</p>
+        <input type="text" id="track-input" placeholder="Type something...">
+        <button id="track-btn">Click Me!</button>
+    </div>
+
+    <div id="log-controls">
+        <button onclick="resetLog()">Reset Log</button>
+        <button onclick="exportLog()">Export Log</button>
+    </div>
+
+    <div id="activity-board">
+        <h3>Live Activity Log</h3>
+        <ul id="log-list"></ul>
+    </div>
+</div>

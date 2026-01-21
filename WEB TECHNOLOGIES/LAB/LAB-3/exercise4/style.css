@@ -1,0 +1,29 @@
+#activity-board {
+    height: 300px;
+    overflow-y: auto;
+    background: #2c3e50;
+    color: #ecf0f1;
+    padding: 15px;
+    font-family: 'Courier New', Courier, monospace;
+    border-radius: 8px;
+}
+
+#log-list {
+    list-style: none;
+    padding: 0;
+}
+
+#log-list li {
+    font-size: 0.85rem;
+    padding: 3px 0;
+    border-bottom: 1px solid #34495e;
+}
+
+#log-list li strong {
+    color: #3498db;
+}
+
+#log-list li em {
+    color: #f1c40f;
+    margin-left: 10px;
+}

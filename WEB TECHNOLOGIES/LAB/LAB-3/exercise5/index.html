@@ -1,0 +1,40 @@
+<div class="wizard-container">
+    <h2>Client Onboarding</h2>
+    
+    <div class="progress-wrapper">
+        <div id="progress-bar"></div>
+    </div>
+
+    <form id="multi-stage-form">
+        <div class="form-stage" id="stage-1">
+            <h3>Step 1: Account Details</h3>
+            <input type="text" id="username" placeholder="Username" required>
+            <input type="email" id="stage-email" placeholder="Email Address" required>
+        </div>
+
+        <div class="form-stage" id="stage-2" style="display:none;">
+            <h3>Step 2: Personal Profile</h3>
+            <input type="text" id="fname" placeholder="First Name" required>
+            <input type="number" id="age" placeholder="Age" min="18">
+        </div>
+
+        <div class="form-stage" id="stage-3" style="display:none;">
+            <h3>Step 3: Preferences</h3>
+            <label><input type="checkbox" id="newsletter"> Subscribe to Newsletter</label>
+            <select id="theme">
+                <option value="light">Light Mode</option>
+                <option value="dark">Dark Mode</option>
+            </select>
+        </div>
+
+        <div class="form-stage" id="stage-4" style="display:none;">
+            <h3>Step 4: Review & Submit</h3>
+            <div id="review-data"></div>
+        </div>
+
+        <div class="nav-buttons">
+            <button type="button" id="prevBtn" onclick="changeStage(-1)" disabled>Previous</button>
+            <button type="button" id="nextBtn" onclick="changeStage(1)">Next</button>
+        </div>
+    </form>
+</div>

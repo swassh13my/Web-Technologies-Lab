@@ -1,0 +1,34 @@
+.wizard-container {
+    max-width: 500px;
+    margin: auto;
+    border: 1px solid #ddd;
+    padding: 20px;
+    border-radius: 10px;
+}
+
+.progress-wrapper {
+    width: 100%;
+    height: 10px;
+    background: #eee;
+    margin-bottom: 20px;
+    border-radius: 5px;
+    overflow: hidden;
+}
+
+#progress-bar {
+    height: 100%;
+    background: #4caf50;
+    width: 25%;
+    transition: width 0.3s ease;
+}
+
+.nav-buttons {
+    margin-top: 20px;
+    display: flex;
+    justify-content: space-between;
+}
+
+input.invalid {
+    border: 2px solid red;
+    background-color: #fff0f0;
+}
