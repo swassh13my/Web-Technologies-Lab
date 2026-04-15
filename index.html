@@ -1,14 +1,33 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Product Inventory</title>
-  <link rel="stylesheet" href="style.css">
+    <title>VIT-AP Lab 7: MongoDB</title>
+    <style>
+        body { font-family: sans-serif; padding: 20px; }
+        .box { border: 1px solid #ccc; padding: 15px; margin-bottom: 20px; }
+    </style>
 </head>
 <body>
-  <h2>Product Inventory System</h2>
-  <button onclick="loadInventory()">Load Inventory</button>
-  <table id="inventoryTable"></table>
-  <p id="totalValue"></p>
-  <script src="script.js"></script>
+    <h1>Student Notes Manager</h1>
+    <div class="box">
+        <input type="text" id="noteTitle" placeholder="Title">
+        <input type="text" id="noteSubject" placeholder="Subject">
+        <textarea id="noteDesc" placeholder="Description"></textarea>
+        <button onclick="addNote()">Add Note</button>
+    </div>
+    <button onclick="fetchNotes()">View All Notes</button>
+    <div id="notesList"></div>
+
+    <hr>
+
+    <h1>Online Book Finder</h1>
+    <div class="box">
+        <input type="text" id="searchTitle" placeholder="Search title...">
+        <button onclick="searchBooks()">Search</button>
+        <button onclick="getTopRated()">Top Rated</button>
+    </div>
+    <div id="booksList"></div>
+
+    <script src="script.js"></script>
 </body>
 </html>
